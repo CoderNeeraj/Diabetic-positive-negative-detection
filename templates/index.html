@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #2539e7;
+            margin-bottom: 7px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        label {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="number"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #5a67d8;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #434190;
+        }
+        .note {
+            margin-top: 20px;
+            color: #ff0000;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diabetic Predictor</h1>
+        <form action="/predict" method="post">
+            <label for="Pregnancies">Pregnancies:</label>
+            <input type="number" step="any" id="Pregnancies" name="Pregnancies" required>
+            
+            <label for="Glucose">Glucose:</label>
+            <input type="number" step="any" id="Glucose" name="Glucose" required>
+            
+            <label for="BloodPressure">Blood Pressure:</label>
+            <input type="number" step="any" id="BloodPressure" name="BloodPressure" required>
+            
+            <label for="SkinThickness">Skin Thickness:</label>
+            <input type="number" step="any" id="SkinThickness" name="SkinThickness" required>
+            
+            <label for="Insulin">Insulin:</label>
+            <input type="number" step="any" id="Insulin" name="Insulin" required>
+            
+            <label for="BMI">BMI:</label>
+            <input type="number" step="any" id="BMI" name="BMI" required>
+            
+            <label for="DiabetesPedigreeFunction">Diabetes Pedigree Function:</label>
+            <input type="number" step="any" id="DiabetesPedigreeFunction" name="DiabetesPedigreeFunction" required>
+            
+            <label for="Age">Age:</label>
+            <input type="number" step="any" id="Age" name="Age" required>
+            
+            <input type="submit" value="Predict">
+        </form>
+        <div>
+            {% if prediction_text %}
+                <h2>{{ prediction_text }}</h2>
+            {% endif %}
+        </div>
+        <div class="note">
+            <p>Note: Do not rely on this prediction. Please consult with a doctor.</p>
+        </div>
+    </div>
+</body>
+</html>
